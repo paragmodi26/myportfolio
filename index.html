@@ -41,7 +41,6 @@
       border: 1px solid rgba(20, 157, 221, 0.15);
       border-radius: 12px;
       padding: 1.4rem 1.35rem 1.25rem;
-      height: 100%;
       box-shadow: 0 4px 18px rgba(15, 29, 45, 0.06);
       transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
     }
@@ -76,6 +75,137 @@
       color: #6c757d;
       margin-bottom: 0.85rem;
       line-height: 1.45;
+    }
+    #skills .skill-toggle-card {
+      position: relative;
+    }
+    #skills .skill-toggle-header {
+      width: 100%;
+      text-align: left;
+      border: none;
+      background: transparent;
+      padding: 0 1.75rem 0 0;
+      margin: 0;
+      font: inherit;
+      color: inherit;
+      position: relative;
+    }
+    #skills .skill-toggle-header:focus-visible {
+      outline: 2px solid rgba(20, 157, 221, 0.5);
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
+    #skills .skill-toggle-header .skill-category-badge {
+      margin-bottom: 0.65rem;
+    }
+    #skills .skill-toggle-header h3 {
+      margin-bottom: 0.35rem;
+    }
+    #skills .skill-toggle-hint {
+      font-size: 0.78rem;
+      color: #6c757d;
+      margin-top: 0.35rem;
+      margin-bottom: 0;
+    }
+    #skills .skill-toggle-chevron {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #149ddd;
+      font-size: 1.1rem;
+      transition: transform 0.25s ease;
+    }
+    #skills .skill-toggle-header[aria-expanded="true"] .skill-toggle-chevron {
+      transform: translateY(-50%) rotate(180deg);
+    }
+    #skills .skill-toggle-body {
+      border-top: 1px solid rgba(20, 157, 221, 0.12);
+      margin-top: 1rem;
+      padding-top: 1rem;
+    }
+    /* Equal-height cards per row */
+    #about .about-details-grid.row > [class*="col-"],
+    #skills .skills-content.row > [class*="col-"],
+    #credentialsPeekParent.row > [class*="col-"],
+    #jobExpRow1.row > [class*="col-"],
+    #jobExpRow2.row > [class*="col-"],
+    #projectsRow1.row > [class*="col-"],
+    #projectsRow2.row > [class*="col-"],
+    #projectsRow3.row > [class*="col-"],
+    #projectsRow4.row > [class*="col-"] {
+      display: flex;
+    }
+    #about .about-details-grid.row,
+    #skills .skills-content.row,
+    #credentialsPeekParent.row,
+    #jobExpRow1.row,
+    #jobExpRow2.row,
+    #projectsRow1.row,
+    #projectsRow2.row,
+    #projectsRow3.row,
+    #projectsRow4.row {
+      align-items: stretch;
+    }
+    /* About detail cards: do NOT stretch to full column height — let content size them */
+    #about .about-details-grid.row > [class*="col-"] > .about-detail-card {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    #skills .skills-content.row > [class*="col-"] > .skill-category-card,
+    #credentialsPeekParent > [class*="col-"] > .peek-card,
+    #jobExpRow1 > [class*="col-"] > article.resume-job-card,
+    #jobExpRow2 > [class*="col-"] > article.resume-job-card,
+    #projectsRow1 > [class*="col-"] > article.project-card,
+    #projectsRow2 > [class*="col-"] > article.project-card,
+    #projectsRow3 > [class*="col-"] > article.project-card,
+    #projectsRow4 > [class*="col-"] > article.project-card {
+      flex: 1 1 auto;
+      width: 100%;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    #jobExpRow1 .resume-job-card,
+    #jobExpRow2 .resume-job-card {
+      height: 100%;
+      margin-bottom: 0;
+    }
+    #credentialsPeekParent .peek-card {
+      height: 100%;
+    }
+    #skills .skill-category-card.skill-toggle-card {
+      height: 100%;
+    }
+    /* Less vertical gap between Skills and Experience */
+    section#skills.skills {
+      padding-top: 40px;
+      padding-bottom: 26px;
+    }
+    section#resume.resume {
+      padding-top: 26px;
+      padding-bottom: 40px;
+    }
+    @media (min-width: 992px) {
+      section#skills.skills {
+        padding-top: 48px;
+        padding-bottom: 32px;
+      }
+      section#resume.resume {
+        padding-top: 32px;
+        padding-bottom: 48px;
+      }
+    }
+    #skills .section-title,
+    #resume .section-title {
+      padding-bottom: 14px;
+    }
+    #skills .section-title h2,
+    #resume .section-title h2 {
+      margin-bottom: 10px;
+      padding-bottom: 12px;
     }
     /* Resume: cards */
     #resume .resume-summary-card {
@@ -234,21 +364,265 @@
       align-items: stretch;
     }
     #resume .resume-exp-section {
-      margin-top: 1.25rem;
-      padding-top: 1.35rem;
+      margin-top: 0.5rem;
+      padding-top: 0.75rem;
       border-top: 1px solid rgba(20, 157, 221, 0.12);
     }
     @media (min-width: 992px) {
       #resume .resume-exp-section {
-        margin-top: 1.5rem;
-        padding-top: 1.5rem;
+        margin-top: 0.65rem;
+        padding-top: 0.85rem;
       }
     }
-    #resume .resume-download-wrap {
+    #resume .resume-exp-section + .resume-exp-section {
+      margin-top: 0.2rem;
+      padding-top: 0.55rem;
+    }
+    @media (min-width: 992px) {
+      #resume .resume-exp-section + .resume-exp-section {
+        margin-top: 0.25rem;
+        padding-top: 0.65rem;
+      }
+    }
+    #resume .resume-block-title {
+      font-family: "Raleway", sans-serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #173b6c;
+      margin: 0 0 0.65rem;
+      padding-bottom: 0.5rem;
+      position: relative;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    #resume .resume-block-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 42px;
+      height: 3px;
+      border-radius: 2px;
+      background: #149ddd;
+    }
+    @media (min-width: 992px) {
+      #resume .resume-block-title {
+        font-size: 1.65rem;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.55rem;
+      }
+      #resume .resume-block-title::after {
+        width: 48px;
+      }
+    }
+    #resume .project-card {
+      background: #fff;
+      border: 1px solid rgba(20, 157, 221, 0.15);
+      border-radius: 12px;
+      padding: 1.5rem 1.5rem 1.35rem;
+      height: 100%;
+      box-shadow: 0 4px 18px rgba(15, 29, 45, 0.06);
+      transition: box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    #resume .project-card:hover {
+      box-shadow: 0 12px 32px rgba(20, 157, 221, 0.12);
+      border-color: rgba(20, 157, 221, 0.35);
+    }
+    #resume .project-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.35rem;
+      color: #173b6c;
+    }
+    #resume .project-meta {
+      font-size: 0.88rem;
+      color: #6c757d;
+      margin-bottom: 0.65rem;
+    }
+    #resume .project-domain {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #149ddd;
+      background: rgba(20, 157, 221, 0.1);
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+    }
+    #resume .project-lead {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: #3a3a3a;
+      margin-bottom: 1rem;
+    }
+    #resume .project-card ul {
+      margin-bottom: 0;
+      padding-left: 1.1rem;
+    }
+    #resume .project-card ul li {
+      margin-bottom: 0.4rem;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    #resume .project-stack {
+      margin-bottom: 0.85rem;
+    }
+    #resume .project-links a {
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    #resume .project-card h3 i {
+      color: #149ddd;
+    }
+    #resume .project-team-line {
+      font-size: 0.9rem;
+      color: #3a3a3a;
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+    #resume .peek-card {
+      background: #fff;
+      border: 1px solid rgba(20, 157, 221, 0.14);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 14px rgba(15, 29, 45, 0.05);
+      height: 100%;
+    }
+    #resume .peek-card-toggle {
+      width: 100%;
+      text-align: left;
+      border: none;
+      background: #fff;
+      padding: 1.15rem 1.25rem;
+      font: inherit;
+      color: #173b6c;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      transition: background 0.2s ease;
+    }
+    #resume .peek-card-toggle:hover {
+      background: rgba(20, 157, 221, 0.06);
+    }
+    #resume .peek-card-toggle:focus-visible {
+      outline: 3px solid rgba(20, 157, 221, 0.45);
+      outline-offset: -2px;
+    }
+    #resume .peek-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin: 0;
+    }
+    #resume .peek-card-title i {
+      color: #149ddd;
+      font-size: 1.1rem;
+    }
+    #resume .peek-card-hint {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #149ddd;
+      flex-shrink: 0;
+    }
+    #resume .peek-card-body {
+      padding: 0 1.25rem 1.15rem;
+      border-top: 1px solid rgba(20, 157, 221, 0.1);
+    }
+    #resume .peek-card-body .lead {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #3a3a3a;
+      margin-bottom: 0;
+    }
+    #resume .cubexo-roles-banner {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-top: 0.35rem;
+      margin-bottom: 0.25rem;
+    }
+    #resume .cubexo-role-chip {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(135deg, #149ddd, #117cad);
+      padding: 0.28rem 0.65rem;
+      border-radius: 6px;
+      margin-right: 0.35rem;
+      vertical-align: middle;
+    }
+    #resume .cubexo-role-line {
+      font-size: 0.88rem;
+      color: #173b6c;
+      line-height: 1.45;
+    }
+    #resume .cubexo-role-block {
+      padding-top: 0.5rem;
+    }
+    #resume .cubexo-role-block + .cubexo-role-block {
       margin-top: 1rem;
-      padding-top: 0.85rem;
+      padding-top: 1rem;
+      border-top: 1px dashed rgba(20, 157, 221, 0.35);
+    }
+    #resume .cubexo-role-block h5 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #173b6c;
+      margin: 0.5rem 0 0.65rem;
+      font-family: "Raleway", sans-serif;
+    }
+    #resume .exp-toggle-card .exp-toggle-header {
+      width: 100%;
+      text-align: left;
+      border: none;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      font: inherit;
+      color: inherit;
+      position: relative;
+      padding-right: 1.75rem;
+    }
+    #resume .exp-toggle-card .exp-toggle-header:focus-visible {
+      outline: 2px solid rgba(20, 157, 221, 0.5);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+    #resume .exp-toggle-card .exp-chevron {
+      position: absolute;
+      right: 0;
+      top: 0.15rem;
+      color: #149ddd;
+      transition: transform 0.25s ease;
+    }
+    #resume .exp-toggle-card .exp-toggle-header[aria-expanded="true"] .exp-chevron {
+      transform: rotate(180deg);
+    }
+    #resume .exp-toggle-card .exp-toggle-hint {
+      font-size: 0.78rem;
+      color: #6c757d;
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+    }
+    #resume .exp-toggle-card .exp-toggle-detail {
+      margin-top: 1rem;
+      padding-top: 1rem;
       border-top: 1px solid rgba(20, 157, 221, 0.12);
     }
+    #resume .resume-job-card.exp-toggle-card,
+    #resume .project-card.exp-toggle-card {
+      padding-bottom: 1.25rem;
+    }
+    #about .btn-download-cv,
     #resume .btn-download-cv {
       border: none;
       border-radius: 12px;
@@ -264,6 +638,7 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
       transition: transform 0.22s ease, box-shadow 0.28s ease, background-position 0.35s ease, filter 0.2s ease;
     }
+    #about .btn-download-cv:hover,
     #resume .btn-download-cv:hover {
       color: #fff !important;
       transform: translateY(-3px);
@@ -274,81 +649,25 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.25);
       filter: brightness(1.06);
     }
+    #about .btn-download-cv:active,
     #resume .btn-download-cv:active {
       transform: translateY(-1px);
     }
+    #about .btn-download-cv:focus-visible,
     #resume .btn-download-cv:focus-visible {
       color: #fff !important;
       outline: 3px solid rgba(20, 157, 221, 0.55);
       outline-offset: 3px;
     }
+    #about .btn-download-cv i,
     #resume .btn-download-cv i {
       font-size: 1.1em;
       vertical-align: -0.1em;
       transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+    #about .btn-download-cv:hover i,
     #resume .btn-download-cv:hover i {
       transform: translateY(3px);
-    }
-    #portfolio .project-card {
-      background: #fff;
-      border: 1px solid rgba(20, 157, 221, 0.15);
-      border-radius: 12px;
-      padding: 1.5rem 1.5rem 1.35rem;
-      height: 100%;
-      box-shadow: 0 4px 18px rgba(15, 29, 45, 0.06);
-      transition: box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-    #portfolio .project-card:hover {
-      box-shadow: 0 12px 32px rgba(20, 157, 221, 0.12);
-      border-color: rgba(20, 157, 221, 0.35);
-    }
-    #portfolio .project-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.35rem;
-      color: #173b6c;
-    }
-    #portfolio .project-meta {
-      font-size: 0.88rem;
-      color: #6c757d;
-      margin-bottom: 0.65rem;
-    }
-    #portfolio .project-domain {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: #149ddd;
-      background: rgba(20, 157, 221, 0.1);
-      padding: 0.3rem 0.65rem;
-      border-radius: 6px;
-      margin-bottom: 0.75rem;
-    }
-    #portfolio .project-lead {
-      font-size: 0.95rem;
-      line-height: 1.55;
-      color: #3a3a3a;
-      margin-bottom: 1rem;
-    }
-    #portfolio .project-card ul {
-      margin-bottom: 0;
-      padding-left: 1.1rem;
-    }
-    #portfolio .project-card ul li {
-      margin-bottom: 0.4rem;
-      font-size: 0.92rem;
-      line-height: 1.5;
-    }
-    #portfolio .project-stack {
-      margin-bottom: 0.85rem;
-    }
-    #portfolio .project-links a {
-      font-size: 0.88rem;
-      font-weight: 600;
-    }
-    #portfolio .project-card h3 i {
-      color: #149ddd;
     }
   </style>
 </head>
@@ -385,9 +704,9 @@
           <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
           <li><a href="#skills" class="nav-link scrollto"><i class="bx bx-code-alt"></i> <span>Skills</span></a></li>
-          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i>
-              <span>Projects</span></a></li>
+          <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-briefcase"></i> <span>Experience</span></a></li>
+          <li><a href="assets/Parag_Modi_CV_fixed.pdf" class="nav-link nav-cv-download" download><i
+                class="bi bi-download"></i> <span>Download CV</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
     </div>
@@ -436,7 +755,7 @@
           </div>
 
           <p class="section-subheading text-uppercase fw-semibold mb-2">Contact &amp; profile</p>
-          <div class="about-details-grid row g-3">
+          <div class="about-details-grid row g-2">
               <div class="col-md-6">
                 <div class="about-detail-card">
                   <div class="about-detail-icon" aria-hidden="true"><i class="bi bi-geo-alt"></i></div>
@@ -514,6 +833,15 @@
               </div>
             </div>
 
+            <div class="about-download-cta text-center text-md-start mt-4 pt-3 border-top border-light"
+              data-aos="fade-up">
+              <p class="small text-muted mb-2 mb-md-3">Prefer a PDF? Download my CV anytime—the same file is linked in
+                the sidebar.</p>
+              <a class="btn btn-lg btn-download-cv" href="assets/Parag_Modi_CV_fixed.pdf" download>
+                <i class="bi bi-download me-2" aria-hidden="true"></i>Download CV (PDF)
+              </a>
+            </div>
+
         </div>
 
       </div>
@@ -532,78 +860,106 @@
         </div>
 
         <div class="section-body">
-          <div class="row g-4 skills-content">
+          <p class="small text-muted mb-2" data-aos="fade-up">Each card names an area (Backend, Frontend, and so on). Tap
+            to expand technologies—only one card per row stays open.</p>
+          <div class="row g-4 mb-2 skills-content" id="skillsRowTop">
 
             <div class="col-md-6" data-aos="fade-up">
-              <article class="skill-category-card h-100">
-                <span class="skill-category-badge">Core</span>
-                <h3><i class="bx bx-server"></i>Backend</h3>
-                <p class="skill-category-lead">APIs, services, and integration—Python-first with strong REST design.</p>
-                <div>
-                  <span class="skill-pill">Python</span>
-                  <span class="skill-pill">FastAPI</span>
-                  <span class="skill-pill">Flask</span>
-                  <span class="skill-pill">Django</span>
-                  <span class="skill-pill">Celery</span>
-                  <span class="skill-pill">REST API design</span>
-                  <span class="skill-pill">Java</span>
+              <article class="skill-category-card skill-toggle-card">
+                <button type="button" class="skill-toggle-header" data-bs-toggle="collapse" data-bs-target="#skillCollapseBackend"
+                  aria-expanded="false" aria-controls="skillCollapseBackend">
+                  <span class="skill-category-badge">Core</span>
+                  <h3 class="mb-0"><i class="bx bx-server"></i>Backend</h3>
+                  <span class="skill-toggle-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                </button>
+                <div id="skillCollapseBackend" class="collapse skill-toggle-body" data-bs-parent="#skillsRowTop">
+                  <p class="skill-category-lead">APIs, services, and integration—Python-first with strong REST design.</p>
+                  <div>
+                    <span class="skill-pill">Python</span>
+                    <span class="skill-pill">FastAPI</span>
+                    <span class="skill-pill">Flask</span>
+                    <span class="skill-pill">Django</span>
+                    <span class="skill-pill">Celery</span>
+                    <span class="skill-pill">REST API design</span>
+                  </div>
                 </div>
               </article>
             </div>
 
             <div class="col-md-6" data-aos="fade-up" data-aos-delay="80">
-              <article class="skill-category-card h-100">
-                <span class="skill-category-badge">Experience</span>
-                <h3><i class="bx bx-layout"></i>Frontend</h3>
-                <p class="skill-category-lead">Modern SPAs and classic stacks—shipping usable, responsive interfaces.</p>
-                <div>
-                  <span class="skill-pill">React</span>
-                  <span class="skill-pill">Angular</span>
-                  <span class="skill-pill">JavaScript</span>
-                  <span class="skill-pill">HTML5</span>
-                  <span class="skill-pill">CSS3</span>
-                  <span class="skill-pill">jQuery</span>
-                  <span class="skill-pill">AJAX</span>
-                  <span class="skill-pill">Bootstrap</span>
+              <article class="skill-category-card skill-toggle-card">
+                <button type="button" class="skill-toggle-header" data-bs-toggle="collapse"
+                  data-bs-target="#skillCollapseFrontend" aria-expanded="false" aria-controls="skillCollapseFrontend">
+                  <span class="skill-category-badge">Experience</span>
+                  <h3 class="mb-0"><i class="bx bx-layout"></i>Frontend</h3>
+                  <span class="skill-toggle-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                </button>
+                <div id="skillCollapseFrontend" class="collapse skill-toggle-body" data-bs-parent="#skillsRowTop">
+                  <p class="skill-category-lead">Modern SPAs and classic stacks—shipping usable, responsive interfaces.</p>
+                  <div>
+                    <span class="skill-pill">React</span>
+                    <span class="skill-pill">Angular</span>
+                    <span class="skill-pill">JavaScript</span>
+                    <span class="skill-pill">HTML5</span>
+                    <span class="skill-pill">CSS3</span>
+                    <span class="skill-pill">jQuery</span>
+                    <span class="skill-pill">AJAX</span>
+                    <span class="skill-pill">Bootstrap</span>
+                  </div>
                 </div>
               </article>
             </div>
 
+          </div>
+          <div class="row g-4 skills-content" id="skillsRowBottom">
+
             <div class="col-md-6" data-aos="fade-up">
-              <article class="skill-category-card h-100">
-                <span class="skill-category-badge">Data layer</span>
-                <h3><i class="bx bx-data"></i>Databases &amp; search</h3>
-                <p class="skill-category-lead">Relational, document, key-value, and full-text search at production scale.</p>
-                <div>
-                  <span class="skill-pill">PostgreSQL</span>
-                  <span class="skill-pill">MySQL</span>
-                  <span class="skill-pill">MongoDB</span>
-                  <span class="skill-pill">DynamoDB</span>
-                  <span class="skill-pill">DocumentDB</span>
-                  <span class="skill-pill">Elasticsearch</span>
-                  <span class="skill-pill">SQLAlchemy</span>
-                  <span class="skill-pill">Redis</span>
+              <article class="skill-category-card skill-toggle-card">
+                <button type="button" class="skill-toggle-header" data-bs-toggle="collapse" data-bs-target="#skillCollapseData"
+                  aria-expanded="false" aria-controls="skillCollapseData">
+                  <span class="skill-category-badge">Data layer</span>
+                  <h3 class="mb-0"><i class="bx bx-data"></i>Databases &amp; search</h3>
+                  <span class="skill-toggle-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                </button>
+                <div id="skillCollapseData" class="collapse skill-toggle-body" data-bs-parent="#skillsRowBottom">
+                  <p class="skill-category-lead">Relational, document, key-value, and full-text search at production scale.</p>
+                  <div>
+                    <span class="skill-pill">PostgreSQL</span>
+                    <span class="skill-pill">MySQL</span>
+                    <span class="skill-pill">MongoDB</span>
+                    <span class="skill-pill">DynamoDB</span>
+                    <span class="skill-pill">DocumentDB</span>
+                    <span class="skill-pill">Elasticsearch</span>
+                    <span class="skill-pill">SQLAlchemy</span>
+                    <span class="skill-pill">Redis</span>
+                  </div>
                 </div>
               </article>
             </div>
 
             <div class="col-md-6" data-aos="fade-up" data-aos-delay="80">
-              <article class="skill-category-card h-100">
-                <span class="skill-category-badge">Platform</span>
-                <h3><i class="bx bx-cloud"></i>Cloud &amp; tools</h3>
-                <p class="skill-category-lead">AWS-certified delivery, multi-cloud exposure, and a solid everyday toolkit.</p>
-                <div>
-                  <span class="skill-pill">AWS (Developer Associate)</span>
-                  <span class="skill-pill">Azure</span>
-                  <span class="skill-pill">Grafana</span>
-                  <span class="skill-pill">Git</span>
-                  <span class="skill-pill">GitHub</span>
-                  <span class="skill-pill">PyCharm</span>
-                  <span class="skill-pill">VS Code</span>
-                  <span class="skill-pill">Postman</span>
-                  <span class="skill-pill">PgAdmin</span>
-                  <span class="skill-pill">Selenium</span>
-                  <span class="skill-pill">Elastic Vue</span>
+              <article class="skill-category-card skill-toggle-card">
+                <button type="button" class="skill-toggle-header" data-bs-toggle="collapse" data-bs-target="#skillCollapseCloud"
+                  aria-expanded="false" aria-controls="skillCollapseCloud">
+                  <span class="skill-category-badge">Platform</span>
+                  <h3 class="mb-0"><i class="bx bx-cloud"></i>Cloud &amp; tools</h3>
+                  <span class="skill-toggle-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                </button>
+                <div id="skillCollapseCloud" class="collapse skill-toggle-body" data-bs-parent="#skillsRowBottom">
+                  <p class="skill-category-lead">AWS-certified delivery, multi-cloud exposure, and a solid everyday toolkit.</p>
+                  <div>
+                    <span class="skill-pill">AWS (Developer Associate)</span>
+                    <span class="skill-pill">Azure</span>
+                    <span class="skill-pill">Grafana</span>
+                    <span class="skill-pill">Git</span>
+                    <span class="skill-pill">GitHub</span>
+                    <span class="skill-pill">PyCharm</span>
+                    <span class="skill-pill">VS Code</span>
+                    <span class="skill-pill">Postman</span>
+                    <span class="skill-pill">PgAdmin</span>
+                    <span class="skill-pill">Selenium</span>
+                    <span class="skill-pill">Elastic Vue</span>
+                  </div>
                 </div>
               </article>
             </div>
@@ -614,343 +970,489 @@
       </div>
     </section><!-- End Skills Section -->
 
-    <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume">
+    <!-- ======= Experience: credentials, roles, projects ======= -->
+    <section id="resume" class="resume portfolio section-bg">
       <div class="container">
 
         <div class="section-title">
-          <h2>Resume</h2>
-          <p>Full stack delivery across HR tech, petroleum data integration, ticketing, media AI, and SaaS data
-            platforms.</p>
+          <h2>Experience &amp; projects</h2>
+          <p>Certifications, education, awards, roles, and shipped products in one place—contact details stay in
+            <strong>About</strong> above. Tap a card to expand; download your PDF from the sidebar or About section.</p>
         </div>
 
         <div class="section-body">
-          <!-- Top: profile + education, awards, certifications (aligned grid) -->
-          <div class="row g-4 resume-top-row">
-            <div class="col-lg-5" data-aos="fade-up">
-              <div class="resume-summary-card h-100 mb-0">
-                <span class="resume-kicker">Profile snapshot</span>
-                <h3 class="h4 mb-2 resume-summary-name">Parag Modi</h3>
-                <p class="lead mb-3 fst-italic">Full stack software engineer with 5+ years building scalable web
-                  applications and APIs. <strong>AWS Developer Associate.</strong> FastAPI, Flask, Django, React,
-                  Angular, Elasticsearch, Celery, Redis, PostgreSQL—from architecture through deployment and
-                  observability.</p>
-                <div class="pt-1 border-top border-light">
-                  <div class="resume-contact-line mt-3"><i class="bi bi-geo-alt"></i><span>Ujjain, Madhya Pradesh,
-                      India</span></div>
-                  <div class="resume-contact-line"><i class="bi bi-telephone"></i><a href="tel:+916261448319">+91
-                      6261448319</a></div>
-                  <div class="resume-contact-line mb-0"><i class="bi bi-envelope"></i><a
-                      href="mailto:paragmodi2601@gmail.com">paragmodi2601@gmail.com</a></div>
+          <p class="section-subheading text-uppercase fw-semibold mb-2" data-aos="fade-up">Credentials</p>
+          <p class="small text-muted mb-2" data-aos="fade-up">Only one panel opens at a time—open another to switch.</p>
+          <div class="row g-3 mb-1" id="credentialsPeekParent" data-aos="fade-up">
+            <div class="col-md-6 col-xl-3">
+              <div class="peek-card">
+                <button type="button" class="peek-card-toggle" data-bs-toggle="collapse" data-bs-target="#peekProfSummary"
+                  aria-expanded="false" aria-controls="peekProfSummary">
+                  <span class="peek-card-title"><i class="bi bi-person-lines-fill" aria-hidden="true"></i>Professional
+                    summary</span>
+                  <span class="peek-card-hint">Show</span>
+                </button>
+                <div id="peekProfSummary" class="collapse peek-card-body" data-bs-parent="#credentialsPeekParent">
+                  <p class="lead fst-italic mb-0">Full stack software engineer with 5+ years building scalable web
+                    applications and APIs. <strong>AWS Developer Associate.</strong> FastAPI, Flask, Django, React,
+                    Angular, Elasticsearch, Celery, Redis, PostgreSQL—from architecture through deployment and
+                    observability.</p>
                 </div>
               </div>
             </div>
+            <div class="col-md-6 col-xl-3">
+              <div class="peek-card">
+                <button type="button" class="peek-card-toggle" data-bs-toggle="collapse" data-bs-target="#peekCerts"
+                  aria-expanded="false" aria-controls="peekCerts">
+                  <span class="peek-card-title"><i class="bi bi-patch-check" aria-hidden="true"></i>Certifications</span>
+                  <span class="peek-card-hint">Show</span>
+                </button>
+                <div id="peekCerts" class="collapse peek-card-body" data-bs-parent="#credentialsPeekParent">
+                  <ul class="resume-cert-list mb-0">
+                    <li>AWS Developer Associate — Amazon Web Services</li>
+                    <li>Foundation Programming in Django Web Application Development</li>
+                    <li>Certificate of Participation in Python Programming and Logic Development</li>
+                    <li>Foundation Programming in Java, HTML, CSS, JavaScript, MySQL</li>
+                    <li>Foundation Programming in C, C++</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <div class="peek-card">
+                <button type="button" class="peek-card-toggle" data-bs-toggle="collapse" data-bs-target="#peekEdu"
+                  aria-expanded="false" aria-controls="peekEdu">
+                  <span class="peek-card-title"><i class="bi bi-mortarboard" aria-hidden="true"></i>Education</span>
+                  <span class="peek-card-hint">Show</span>
+                </button>
+                <div id="peekEdu" class="collapse peek-card-body" data-bs-parent="#credentialsPeekParent">
+                  <p class="mb-1 edu-title">B.Tech — Computer Science &amp; Engineering</p>
+                  <p class="small text-muted mb-2">Alpine Institute of Technology, Ujjain</p>
+                  <span class="date-pill">2017 – 2021</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <div class="peek-card">
+                <button type="button" class="peek-card-toggle" data-bs-toggle="collapse" data-bs-target="#peekAwards"
+                  aria-expanded="false" aria-controls="peekAwards">
+                  <span class="peek-card-title"><i class="bi bi-award" aria-hidden="true"></i>Awards</span>
+                  <span class="peek-card-hint">Show</span>
+                </button>
+                <div id="peekAwards" class="collapse peek-card-body" data-bs-parent="#credentialsPeekParent">
+                  <p class="mb-1 award-title">Consultant of the Month</p>
+                  <p class="small text-muted mb-0">April 2022 · Client company recognition</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-            <div class="col-lg-7" data-aos="fade-up" data-aos-delay="60">
-              <div class="row g-3 h-100">
-                <div class="col-md-6">
-                  <div class="resume-mini-card h-100 mb-0">
-                    <h4 class="resume-mini-title"><i class="bi bi-mortarboard"></i>Education</h4>
-                    <p class="mb-1 edu-title">B.Tech — Computer Science &amp; Engineering</p>
-                    <p class="small text-muted mb-2">Alpine Institute of Technology, Ujjain</p>
-                    <span class="date-pill">2017 – 2021</span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="resume-mini-card h-100 mb-0">
-                    <h4 class="resume-mini-title"><i class="bi bi-award"></i>Awards</h4>
-                    <p class="mb-0 award-title">Consultant of the Month</p>
-                    <p class="small text-muted mb-0">April 2022 · Client company recognition</p>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="resume-mini-card mb-0">
-                    <h4 class="resume-mini-title"><i class="bi bi-patch-check"></i>Certifications</h4>
-                    <ul class="resume-cert-list mb-0">
-                      <li>AWS Developer Associate — Amazon Web Services</li>
-                      <li>Foundation Programming in Django Web Application Development</li>
-                      <li>Certificate of Participation in Python Programming and Logic Development</li>
-                      <li>Foundation Programming in Java, HTML, CSS, JavaScript, MySQL</li>
-                      <li>Foundation Programming in C, C++</li>
+          <div class="resume-exp-section" data-aos="fade-up">
+            <h3 class="resume-block-title">Professional experience</h3>
+            <div class="row g-3 mb-3" id="jobExpRow1">
+              <div class="col-lg-6">
+                <article class="resume-job-card exp-toggle-card mb-0">
+                  <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#jobYash2025"
+                    aria-expanded="false" aria-controls="jobYash2025">
+                    <span class="date-pill">Jan 2025 – Present</span>
+                    <p class="job-meta mb-1">Current role</p>
+                    <h4 class="mb-0">Sr. Software Engineer</h4>
+                    <p class="company mb-0">Yash Technologies Pvt. Ltd.</p>
+                    <p class="exp-toggle-hint mb-0">YCMS (internal HR) · DataBridge for SLB · Python, React, Angular, AWS,
+                      Azure — <em>click for responsibilities</em></p>
+                    <span class="exp-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <div id="jobYash2025" class="collapse exp-toggle-detail" data-bs-parent="#jobExpRow1">
+                    <ul class="mb-0">
+                      <li>Deliver and evolve <strong>YCMS</strong> (Yash Competency Management System): FastAPI services,
+                        React SPA, AWS deployments, PostgreSQL schema design, Redis caching, Celery workers, reporting and
+                        HR analytics.</li>
+                      <li>Integrate <strong>Ollama</strong> for AI-assisted competency insights; async report generation and
+                        notifications with Celery and Redis.</li>
+                      <li>Lead an <strong>8-person</strong> engineering pod on YCMS as <strong>Python + React</strong>
+                        developer—backlog grooming, code review, releases, and alignment with HR stakeholders.</li>
+                      <li>On <strong>DataBridge</strong> for <strong>SLB</strong>, operate as <strong>Python + Angular</strong>
+                        full-stack consultant within a larger (~<strong>20</strong>-person) client program: on-prem
+                        extractor, cloud ingestion (Flask/FastAPI), Angular UI for queries, schedules, and bulk operations.</li>
+                      <li>Build and extend a custom <strong>query builder</strong>, Grafana-backed monitoring, and secure
+                        connectivity patterns with client infra and security teams.</li>
                     </ul>
                   </div>
-                </div>
+                </article>
+              </div>
+              <div class="col-lg-6">
+                <article class="resume-job-card exp-toggle-card mb-0">
+                  <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#jobThoughtwin"
+                    aria-expanded="false" aria-controls="jobThoughtwin">
+                    <span class="date-pill">Sep 2024 – Jan 2025</span>
+                    <h4 class="mb-0 pt-1">Software Engineer</h4>
+                    <p class="company mb-0">Thoughtwin</p>
+                    <p class="exp-toggle-hint mb-0">TotalTicketing · white-label event ticketing · Python, FastAPI, React —
+                      <em>click for responsibilities</em></p>
+                    <span class="exp-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <div id="jobThoughtwin" class="collapse exp-toggle-detail" data-bs-parent="#jobExpRow1">
+                    <ul class="mb-0">
+                      <li>Senior <strong>Python</strong> engineer on <strong>TotalTicketing</strong> for a China-based
+                        client, part of a <strong>14-person</strong> product team.</li>
+                      <li>Owned core booking and catalog APIs in <strong>FastAPI</strong>; PostgreSQL modeling for events,
+                        venues, seating, pricing, and orders.</li>
+                      <li>Partnered with frontend engineers on <strong>React</strong> flows for box office and online
+                        purchase; Redis-backed real-time seat holds and availability.</li>
+                      <li>Integrated payment providers and admin tooling for lifecycle management, capacity controls, and
+                        operational reporting.</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="row g-3" id="jobExpRow2">
+              <div class="col-lg-6">
+                <article class="resume-job-card exp-toggle-card mb-0">
+                  <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#jobFrammer"
+                    aria-expanded="false" aria-controls="jobFrammer">
+                    <span class="date-pill">Jun 2024 – Jul 2024</span>
+                    <h4 class="mb-0 pt-1">Software Engineer</h4>
+                    <p class="company mb-0">Frammer AI</p>
+                    <p class="exp-toggle-hint mb-0">Media AI SaaS · Flask → FastAPI migration focus — <em>click for
+                        responsibilities</em></p>
+                    <span class="exp-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <div id="jobFrammer" class="collapse exp-toggle-detail" data-bs-parent="#jobExpRow2">
+                    <ul class="mb-0">
+                      <li><strong>Python developer</strong> on an <strong>8-person</strong> team shipping video
+                        repurposing pipelines (noise reduction, speech-to-text, segmentation, clip packaging).</li>
+                      <li>Led incremental <strong>migration from Flask to FastAPI</strong> for high-throughput endpoints while
+                        keeping AI/ML integrations stable.</li>
+                      <li>Implemented OAuth-based publishing flows toward Instagram and YouTube; cloud storage integrations
+                        for assets and renditions.</li>
+                      <li>Collaborated with product on metadata automation (titles, thumbnails, hashtags) for short-form
+                        distribution.</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+              <div class="col-lg-6">
+                <article class="resume-job-card exp-toggle-card mb-0">
+                  <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#jobCubexoAll"
+                    aria-expanded="false" aria-controls="jobCubexoAll">
+                    <p class="company mb-2">Cubexo Software Solutions, Indore</p>
+                    <div class="cubexo-roles-banner">
+                      <p class="cubexo-role-line mb-0"><span class="cubexo-role-chip">Software Engineer</span><span
+                          class="text-muted">Jul 2022 – Mar 2024</span></p>
+                      <p class="cubexo-role-line mb-0"><span class="cubexo-role-chip">Associate Software Engineer</span><span
+                          class="text-muted">Jul 2021 – Jun 2022</span></p>
+                    </div>
+                    <p class="exp-toggle-hint mb-0">Pulse · SwimTimes · AWS Lambda &amp; serverless — <em>click for both
+                        roles</em></p>
+                    <span class="exp-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <div id="jobCubexoAll" class="collapse exp-toggle-detail" data-bs-parent="#jobExpRow2">
+                    <div class="cubexo-role-block">
+                      <span class="date-pill">Jul 2022 – Mar 2024</span>
+                      <h5>Software Engineer</h5>
+                      <ul class="mb-0">
+                        <li><strong>Pulse</strong> — <strong>Python</strong> developer on a <strong>15-person</strong> squad
+                          building a SaaS data platform: <strong>FastAPI</strong> services, Elasticsearch search, AWS
+                          DocumentDB and PostgreSQL, Celery + Redis pipelines, React-facing REST APIs.</li>
+                        <li>Owned ingestion and search features: mapping design, query tuning, pagination and export APIs,
+                          operational fixes with CloudWatch.</li>
+                        <li><strong>SwimTimes</strong> — <strong>5-person</strong> team; <strong>Python + Django</strong>
+                          backend plus <strong>JavaScript, HTML, and AJAX</strong> for responsive booking UI, Stripe payments,
+                          and role-based dashboards.</li>
+                        <li>Implemented availability logic, email notifications, and PostgreSQL models for instructors,
+                          lessons, and payments.</li>
+                      </ul>
+                    </div>
+                    <div class="cubexo-role-block">
+                      <span class="date-pill">Jul 2021 – Jun 2022</span>
+                      <h5>Associate Software Engineer</h5>
+                      <ul class="mb-0">
+                        <li>Implemented serverless HTTP APIs on <strong>AWS Lambda</strong> and <strong>API Gateway</strong>
+                          with structured logging and error handling.</li>
+                        <li>Used <strong>S3</strong> for document and media storage; <strong>Redis</strong> for caching hot
+                          reads and rate-sensitive paths.</li>
+                        <li>Built scheduled Lambdas (cron) for subscription expiry, cleanup jobs, and batch maintenance.</li>
+                        <li>Developed image and document optimization utilities; used <strong>CloudWatch</strong> for debugging,
+                          alarms, and performance tuning.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </article>
               </div>
             </div>
           </div>
 
-          <!-- Full-width experience -->
           <div class="resume-exp-section" data-aos="fade-up">
-            <p class="section-subheading text-uppercase fw-semibold mb-3">Professional experience</p>
+            <h3 class="resume-block-title">Projects</h3>
+            <p class="small text-muted mb-2">Each card shows client, team size, my role, and stack at a glance—expand for
+              full narrative and links. Only one card per row expands at a time.</p>
+            <div class="row g-4 mb-2" id="projectsRow1">
 
-            <div class="row g-3">
-              <div class="col-12">
-              <article class="resume-job-card">
-                <span class="date-pill">Jan 2025 – Present</span>
-                <p class="job-meta mb-1">Current role</p>
-                <h4>Sr. Software Engineer</h4>
-                <p class="company mb-0">Yash Technologies Pvt. Ltd.</p>
-                <ul class="mt-3 mb-0">
-                  <li><strong>YCMS</strong> — internal HR tech: FastAPI, React, AWS, PostgreSQL, Redis, Celery, Ollama;
-                    skill mapping, assessments, reporting, AI-assisted competency analysis.</li>
-                  <li><strong>DataBridge (SLB)</strong> — petroleum: Java, Python, Flask, FastAPI, Angular, Azure,
-                    Grafana, PostgreSQL; client-side extractor + cloud ingestion, Angular UI for queries and schedules.</li>
-                </ul>
-              </article>
-
-              <article class="resume-job-card">
-                <span class="date-pill">Sep 2024 – Jan 2025</span>
-                <h4>Software Engineer</h4>
-                <p class="company mb-0">Thoughtwin</p>
-                <ul class="mt-3 mb-0">
-                  <li><strong>TotalTicketing</strong> — white-label event ticketing (China-based client): Python,
-                    FastAPI, PostgreSQL, React, Redis; box office &amp; online flows, payments, real-time seat
-                    availability.</li>
-                </ul>
-              </article>
-
-              <article class="resume-job-card">
-                <span class="date-pill">Jun 2024 – Jul 2024</span>
-                <h4>Software Engineer</h4>
-                <p class="company mb-0">Frammer AI</p>
-                <ul class="mt-3 mb-0">
-                  <li><strong>FrammerAI</strong> — media &amp; AI video processing: FastAPI, Flask, AI/ML APIs, cloud
-                    storage; transcription, segmentation, short-form clips, OAuth publish to Instagram &amp; YouTube.</li>
-                </ul>
-              </article>
-
-              <article class="resume-job-card">
-                <span class="date-pill">Jul 2022 – Mar 2024</span>
-                <h4>Software Engineer</h4>
-                <p class="company mb-0">Cubexo Software Solutions, Indore</p>
-                <ul class="mt-3 mb-0">
-                  <li><strong>Pulse (Peak XV)</strong> — SaaS data platform: FastAPI, React, AWS, Elasticsearch,
-                    PostgreSQL, DocumentDB, Redis, Celery; search, ingestion pipelines, REST APIs.</li>
-                  <li><strong>SwimTimes</strong> — ed-tech booking: Django, PostgreSQL, Stripe, AWS, AJAX; dashboards,
-                    payments, availability.</li>
-                </ul>
-              </article>
-
-              <article class="resume-job-card mb-0">
-                <span class="date-pill">Jul 2021 – Jun 2022</span>
-                <h4>Associate Software Engineer</h4>
-                <p class="company mb-0">Cubexo Software Solutions, Indore</p>
-                <ul class="mt-3 mb-0">
-                  <li>AWS Lambda &amp; API Gateway, S3, Redis, CloudWatch; scheduled jobs, image/document optimization.</li>
-                </ul>
-              </article>
+              <div class="col-lg-6" data-aos="fade-up">
+                <article class="project-card exp-toggle-card">
+                  <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#projYcms"
+                    aria-expanded="false" aria-controls="projYcms">
+                    <span class="project-domain">HR tech · Internal</span>
+                    <h3 class="mb-0"><i class="bx bx-group me-1"></i>YCMS</h3>
+                    <p class="project-meta mb-2">Client: Yash Technologies · Jan 2025 – Present</p>
+                    <p class="project-team-line mb-2"><strong>Team:</strong> 8 · <strong>My role:</strong> Python + React
+                      developer; leading the engineering pod</p>
+                    <div class="project-stack">
+                      <span class="skill-pill">FastAPI</span>
+                      <span class="skill-pill">Python</span>
+                      <span class="skill-pill">React</span>
+                      <span class="skill-pill">AWS</span>
+                      <span class="skill-pill">PostgreSQL</span>
+                      <span class="skill-pill">Redis</span>
+                      <span class="skill-pill">Celery</span>
+                      <span class="skill-pill">Ollama</span>
+                    </div>
+                    <p class="exp-toggle-hint mb-0"><em>Click for full project details</em></p>
+                    <span class="exp-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <div id="projYcms" class="collapse exp-toggle-detail" data-bs-parent="#projectsRow1">
+                    <p class="project-lead"><strong>Yash Competency Management System</strong> — internal web platform to
+                      manage, track, and evaluate employee skills and competencies across the organization.</p>
+                    <ul>
+                      <li>Led full-stack delivery: architecture, core features (skill mapping, competency assessments,
+                        reporting), and deployment pipeline ownership.</li>
+                      <li>Integrated <strong>Ollama</strong> for AI-assisted competency analysis; <strong>Celery</strong> and
+                        <strong>Redis</strong> for async report generation and notification workflows.</li>
+                      <li>Partnered with HR leadership and cross-functional teams to align capabilities with organizational
+                        goals.</li>
+                    </ul>
+                  </div>
+                </article>
               </div>
+
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="80">
+                <article class="project-card exp-toggle-card">
+                  <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#projSlb"
+                    aria-expanded="false" aria-controls="projSlb">
+                    <span class="project-domain">Petroleum · Enterprise data</span>
+                    <h3 class="mb-0"><i class="bx bx-git-branch me-1"></i>DataBridge</h3>
+                    <p class="project-meta mb-2">Client: SLB (Schlumberger) via Yash Technologies · Jan 2025 – Present</p>
+                    <p class="project-team-line mb-2"><strong>Team:</strong> 20 (program scale) · <strong>My role:</strong>
+                      Python + Angular full-stack consultant</p>
+                    <div class="project-stack">
+                      <span class="skill-pill">Java</span>
+                      <span class="skill-pill">Python</span>
+                      <span class="skill-pill">Flask</span>
+                      <span class="skill-pill">FastAPI</span>
+                      <span class="skill-pill">Angular</span>
+                      <span class="skill-pill">Azure</span>
+                      <span class="skill-pill">Grafana</span>
+                      <span class="skill-pill">PostgreSQL</span>
+                    </div>
+                    <p class="exp-toggle-hint mb-0"><em>Click for full project details</em></p>
+                    <span class="exp-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <div id="projSlb" class="collapse exp-toggle-detail" data-bs-parent="#projectsRow1">
+                    <p class="project-lead">Enterprise integration platform bridging <strong>ProSource</strong> (client
+                      proprietary DB) and <strong>DW (DataWorkspace)</strong>, removing manual data entry between systems.</p>
+                    <ul>
+                      <li>Dual-component design: <strong>Extractor</strong> on client private infrastructure for secure reads
+                        from ProSource; cloud <strong>ingestion</strong> service for transform/load into DataWorkspace.</li>
+                      <li>Angular UI for entity selection, custom queries, bulk inserts, and ingestion schedules.</li>
+                      <li>Custom <strong>query builder</strong> so clients extend default extraction logic without code
+                        changes.</li>
+                      <li><strong>Grafana</strong> monitoring for pipeline health—less manual overhead, better visibility for
+                        operations.</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+
+            </div>
+            <div class="row g-4 mb-2" id="projectsRow2">
+
+              <div class="col-lg-6" data-aos="fade-up">
+                <article class="project-card exp-toggle-card">
+                  <button type="button" class="exp-toggle-header" data-bs-toggle="collapse"
+                    data-bs-target="#projTotalTicketing" aria-expanded="false" aria-controls="projTotalTicketing">
+                    <span class="project-domain">Event ticketing · E-commerce</span>
+                    <h3 class="mb-0"><i class="bx bx-ticket me-1"></i>TotalTicketing</h3>
+                    <p class="project-meta mb-2">Client: China-based white-label operator · Thoughtwin · Sep 2024 – Jan
+                      2025</p>
+                    <p class="project-team-line mb-2"><strong>Team:</strong> 14 · <strong>My role:</strong> Senior software /
+                      Python developer</p>
+                    <div class="project-stack">
+                      <span class="skill-pill">Python</span>
+                      <span class="skill-pill">FastAPI</span>
+                      <span class="skill-pill">PostgreSQL</span>
+                      <span class="skill-pill">React</span>
+                      <span class="skill-pill">Redis</span>
+                    </div>
+                    <p class="exp-toggle-hint mb-0"><em>Click for full project details</em></p>
+                    <span class="exp-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <div id="projTotalTicketing" class="collapse exp-toggle-detail" data-bs-parent="#projectsRow2">
+                    <p class="project-lead">White-label <strong>online ticketing</strong> platform: each client runs a
+                      branded portal under their own identity.</p>
+                    <ul>
+                      <li>Box office and online flows: admins create events, seating, pricing; users browse and book in real
+                        time.</li>
+                      <li>Admin tooling for lifecycle management—seat maps, pricing tiers, capacity, booking analytics.</li>
+                      <li>Payment integration and <strong>real-time seat availability</strong> to prevent double bookings.</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="80">
+                <article class="project-card exp-toggle-card">
+                  <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#projFrammerAi"
+                    aria-expanded="false" aria-controls="projFrammerAi">
+                    <span class="project-domain">Media &amp; AI</span>
+                    <h3 class="mb-0"><i class="bx bx-movie-play me-1"></i>FrammerAI</h3>
+                    <p class="project-meta mb-2">Client: Frammer AI · Jun 2024 – Jul 2024</p>
+                    <p class="project-team-line mb-2"><strong>Team:</strong> 8 · <strong>My role:</strong> Python developer;
+                      migrating services from Flask to FastAPI</p>
+                    <div class="project-stack">
+                      <span class="skill-pill">Python</span>
+                      <span class="skill-pill">FastAPI</span>
+                      <span class="skill-pill">Flask</span>
+                      <span class="skill-pill">AI/ML APIs</span>
+                      <span class="skill-pill">Cloud storage</span>
+                    </div>
+                    <p class="exp-toggle-hint mb-0"><em>Click for full project details</em></p>
+                    <span class="exp-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <div id="projFrammerAi" class="collapse exp-toggle-detail" data-bs-parent="#projectsRow2">
+                    <p class="project-lead">B2B SaaS for <strong>media companies and creators</strong>—automating end-to-end
+                      video repurposing (long-form → platform-ready short content).</p>
+                    <ul>
+                      <li>Backend for automated processing: noise reduction, speech-to-text, intelligent segmentation.</li>
+                      <li>Pipelines for short-form clips (e.g. Reels, Shorts, X) from long-form recordings.</li>
+                      <li>Automated metadata: hashtags, thumbnails, titles, platform-specific descriptions for discoverability.</li>
+                      <li><strong>OAuth</strong>-based direct publish to Instagram and YouTube on behalf of users.</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+
+            </div>
+            <div class="row g-4 mb-2" id="projectsRow3">
+
+              <div class="col-lg-6" data-aos="fade-up">
+                <article class="project-card exp-toggle-card">
+                  <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#projPulse"
+                    aria-expanded="false" aria-controls="projPulse">
+                    <span class="project-domain">SaaS · Data platform</span>
+                    <h3 class="mb-0"><i class="bx bx-pulse me-1"></i>Pulse</h3>
+                    <p class="project-meta mb-2">Client: Peak XV (via Cubexo) · Jul 2022 – Mar 2024</p>
+                    <p class="project-team-line mb-2"><strong>Team:</strong> 15 · <strong>My role:</strong> Python developer
+                      on FastAPI services</p>
+                    <div class="project-stack">
+                      <span class="skill-pill">FastAPI</span>
+                      <span class="skill-pill">Python</span>
+                      <span class="skill-pill">React</span>
+                      <span class="skill-pill">AWS</span>
+                      <span class="skill-pill">Elasticsearch</span>
+                      <span class="skill-pill">PostgreSQL</span>
+                      <span class="skill-pill">DocumentDB</span>
+                      <span class="skill-pill">Redis</span>
+                      <span class="skill-pill">Celery</span>
+                    </div>
+                    <p class="exp-toggle-hint mb-0"><em>Click for full project details</em></p>
+                    <span class="exp-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <div id="projPulse" class="collapse exp-toggle-detail" data-bs-parent="#projectsRow3">
+                    <p class="project-lead">Cloud <strong>data management</strong> application: unified relational + document
+                      data with powerful search and async processing at scale.</p>
+                    <ul>
+                      <li>FastAPI services connecting <strong>PostgreSQL</strong> and <strong>AWS DocumentDB</strong> for
+                        hybrid structured + flexible storage.</li>
+                      <li><strong>Elasticsearch</strong> for full-text search and faceted filters; tuned mappings and query DSL.</li>
+                      <li>Ingestion pipelines from multiple external APIs and internal sources into a unified schema.</li>
+                      <li>Celery + Redis for scheduled ingestion, processing, aggregation, and reporting.</li>
+                      <li>REST APIs for React: complex filtering, pagination, exports; schema design and reliability across stores.</li>
+                    </ul>
+                    <p class="project-links mb-0 pt-1"><a href="portfolio-details.html">Legacy detail page →</a></p>
+                  </div>
+                </article>
+              </div>
+
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="80">
+                <article class="project-card exp-toggle-card">
+                  <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#projSwim"
+                    aria-expanded="false" aria-controls="projSwim">
+                    <span class="project-domain">Ed-tech · Booking</span>
+                    <h3 class="mb-0"><i class="bx bx-swim me-1"></i>SwimTimes</h3>
+                    <p class="project-meta mb-2">Client: US-based swim school operator · Cubexo</p>
+                    <p class="project-team-line mb-2"><strong>Team:</strong> 5 · <strong>My role:</strong> Python (Django) +
+                      JavaScript/HTML front-end</p>
+                    <div class="project-stack">
+                      <span class="skill-pill">Django</span>
+                      <span class="skill-pill">Python</span>
+                      <span class="skill-pill">JavaScript</span>
+                      <span class="skill-pill">HTML</span>
+                      <span class="skill-pill">AJAX</span>
+                      <span class="skill-pill">AWS</span>
+                      <span class="skill-pill">PostgreSQL</span>
+                      <span class="skill-pill">Redis</span>
+                      <span class="skill-pill">Celery</span>
+                      <span class="skill-pill">Stripe</span>
+                    </div>
+                    <p class="exp-toggle-hint mb-0"><em>Click for full project details</em></p>
+                    <span class="exp-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <div id="projSwim" class="collapse exp-toggle-detail" data-bs-parent="#projectsRow3">
+                    <p class="project-lead">Online platform to <strong>book swim lessons</strong> with real-time
+                      availability, payments, and role-specific dashboards.</p>
+                    <ul>
+                      <li>User dashboard: bookings, progress, history; instructor dashboard: schedules, attendance, earnings.</li>
+                      <li><strong>Stripe</strong> payments; AJAX updates for seat availability to avoid double booking.</li>
+                      <li>PostgreSQL models for users, instructors, bookings, lesson plans, payments; AWS S3 for media.</li>
+                      <li>Authentication, role-based access, email notifications for confirmations and reminders.</li>
+                    </ul>
+                    <p class="project-links mb-0 pt-1"><a href="swim-details.html">More on SwimTimes →</a></p>
+                  </div>
+                </article>
+              </div>
+
+            </div>
+            <div class="row g-4" id="projectsRow4">
+
+              <div class="col-12" data-aos="fade-up">
+                <article class="project-card exp-toggle-card">
+                  <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#projLambda"
+                    aria-expanded="false" aria-controls="projLambda">
+                    <span class="project-domain">AWS · Serverless (early career)</span>
+                    <h3 class="mb-0"><i class="bx bx-cloud me-1"></i>APIs, Lambda &amp; integrations</h3>
+                    <p class="project-meta mb-2">Client: Cubexo internal / multiple · Jul 2021 – Jun 2022</p>
+                    <p class="project-team-line mb-2"><strong>Team:</strong> small platform squad · <strong>My role:</strong>
+                      Associate engineer — serverless APIs &amp; automation</p>
+                    <div class="project-stack">
+                      <span class="skill-pill">AWS Lambda</span>
+                      <span class="skill-pill">API Gateway</span>
+                      <span class="skill-pill">S3</span>
+                      <span class="skill-pill">Redis</span>
+                      <span class="skill-pill">CloudWatch</span>
+                    </div>
+                    <p class="exp-toggle-hint mb-0"><em>Click for full project details</em></p>
+                    <span class="exp-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
+                  </button>
+                  <div id="projLambda" class="collapse exp-toggle-detail" data-bs-parent="#projectsRow4">
+                    <p class="project-lead">Backend features on <strong>AWS Lambda</strong> and <strong>API Gateway</strong>,
+                      with Redis-backed performance patterns and operational visibility.</p>
+                    <ul>
+                      <li>Lambda + API Gateway APIs; S3 for object storage; Redis for low-latency responses.</li>
+                      <li>Scheduled Lambdas (cron) for subscription expiry and similar jobs.</li>
+                      <li>Image and document size optimization scripts; debugging and tuning with CloudWatch.</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+
             </div>
           </div>
 
-          <div class="resume-download-wrap text-center text-md-start">
-            <a class="btn btn-lg btn-download-cv" href="assets/Parag_Modi_CV_fixed.pdf" download>
-              <i class="bi bi-download me-2" aria-hidden="true"></i>Download CV (PDF)
-            </a>
-          </div>
         </div>
       </div>
-    </section><!-- End Resume Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Projects</h2>
-          <p>End-to-end product work across HR tech, energy data, ticketing, media AI, SaaS analytics, and ed-tech—described
-            at the same depth as my CV, without relying on client screenshots.</p>
-        </div>
-
-        <div class="section-body">
-        <div class="row g-4">
-
-          <div class="col-lg-6" data-aos="fade-up">
-            <article class="project-card">
-              <span class="project-domain">HR tech · Internal</span>
-              <h3><i class="bx bx-group me-1"></i> YCMS</h3>
-              <p class="project-meta">Yash Technologies · Sr. Software Engineer · Jan 2025 – Present</p>
-              <p class="project-lead"><strong>Yash Competency Management System</strong> — internal web platform to manage,
-                track, and evaluate employee skills and competencies across the organization.</p>
-              <div class="project-stack">
-                <span class="skill-pill">FastAPI</span>
-                <span class="skill-pill">Python</span>
-                <span class="skill-pill">React</span>
-                <span class="skill-pill">AWS</span>
-                <span class="skill-pill">PostgreSQL</span>
-                <span class="skill-pill">Redis</span>
-                <span class="skill-pill">Celery</span>
-                <span class="skill-pill">Ollama</span>
-              </div>
-              <ul>
-                <li>Led full-stack delivery: architecture, core features (skill mapping, competency assessments, reporting),
-                  and deployment pipeline ownership.</li>
-                <li>Integrated <strong>Ollama</strong> for AI-assisted competency analysis; used <strong>Celery</strong> and
-                  <strong>Redis</strong> for async report generation and notification workflows.</li>
-                <li>Partnered with HR leadership and cross-functional teams to align capabilities with organizational
-                  goals.</li>
-              </ul>
-            </article>
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="80">
-            <article class="project-card">
-              <span class="project-domain">Petroleum · Enterprise data</span>
-              <h3><i class="bx bx-git-branch me-1"></i> DataBridge</h3>
-              <p class="project-meta">Yash Technologies · SLB (Schlumberger) · Jan 2025 – Present</p>
-              <p class="project-lead">Enterprise integration platform bridging <strong>ProSource</strong> (client proprietary
-                DB) and <strong>DW (DataWorkspace)</strong>, removing manual data entry between systems.</p>
-              <div class="project-stack">
-                <span class="skill-pill">Java</span>
-                <span class="skill-pill">Python</span>
-                <span class="skill-pill">Flask</span>
-                <span class="skill-pill">FastAPI</span>
-                <span class="skill-pill">Angular</span>
-                <span class="skill-pill">Azure</span>
-                <span class="skill-pill">Grafana</span>
-                <span class="skill-pill">PostgreSQL</span>
-              </div>
-              <ul>
-                <li>Dual-component design: <strong>Extractor</strong> on client private infrastructure for secure reads from
-                  ProSource; cloud <strong>ingestion</strong> service for transform/load into DataWorkspace.</li>
-                <li>Angular UI for entity selection, custom queries, bulk inserts, and ingestion schedules.</li>
-                <li>Custom <strong>query builder</strong> so clients extend default extraction logic without code changes.</li>
-                <li><strong>Grafana</strong> monitoring for pipeline health—less manual overhead, better visibility for
-                  operations.</li>
-              </ul>
-            </article>
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up">
-            <article class="project-card">
-              <span class="project-domain">Event ticketing · E-commerce</span>
-              <h3><i class="bx bx-ticket me-1"></i> TotalTicketing</h3>
-              <p class="project-meta">Thoughtwin · Software Engineer · Sep 2024 – Jan 2025</p>
-              <p class="project-lead">White-label <strong>online ticketing</strong> platform: each client runs a branded
-                portal under their own identity (China-based client).</p>
-              <div class="project-stack">
-                <span class="skill-pill">Python</span>
-                <span class="skill-pill">FastAPI</span>
-                <span class="skill-pill">PostgreSQL</span>
-                <span class="skill-pill">React</span>
-                <span class="skill-pill">Redis</span>
-              </div>
-              <ul>
-                <li>Box office and online flows: admins create events, seating, pricing; users browse and book in real time.</li>
-                <li>Admin tooling for lifecycle management—seat maps, pricing tiers, capacity, booking analytics.</li>
-                <li>Payment integration and <strong>real-time seat availability</strong> to prevent double bookings.</li>
-              </ul>
-            </article>
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="80">
-            <article class="project-card">
-              <span class="project-domain">Media &amp; AI</span>
-              <h3><i class="bx bx-movie-play me-1"></i> FrammerAI</h3>
-              <p class="project-meta">Frammer AI · Software Engineer · Jun 2024 – Jul 2024</p>
-              <p class="project-lead">B2B SaaS for <strong>media companies and creators</strong>—automating end-to-end video
-                repurposing (long-form → platform-ready short content).</p>
-              <div class="project-stack">
-                <span class="skill-pill">Python</span>
-                <span class="skill-pill">FastAPI</span>
-                <span class="skill-pill">Flask</span>
-                <span class="skill-pill">AI/ML APIs</span>
-                <span class="skill-pill">Cloud storage</span>
-              </div>
-              <ul>
-                <li>Backend for automated processing: noise reduction, speech-to-text, intelligent segmentation.</li>
-                <li>Pipelines for short-form clips (e.g. Reels, Shorts, X) from long-form recordings.</li>
-                <li>Automated metadata: hashtags, thumbnails, titles, platform-specific descriptions for discoverability.</li>
-                <li><strong>OAuth</strong>-based direct publish to Instagram and YouTube on behalf of users.</li>
-              </ul>
-            </article>
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up">
-            <article class="project-card">
-              <span class="project-domain">SaaS · Data platform</span>
-              <h3><i class="bx bx-pulse me-1"></i> Pulse</h3>
-              <p class="project-meta">Cubexo Software Solutions · Software Engineer · Jul 2022 – Mar 2024 · Peak XV</p>
-              <p class="project-lead">Cloud <strong>data management</strong> application: unified relational + document data
-                with powerful search and async processing at scale.</p>
-              <div class="project-stack">
-                <span class="skill-pill">FastAPI</span>
-                <span class="skill-pill">Python</span>
-                <span class="skill-pill">React</span>
-                <span class="skill-pill">AWS</span>
-                <span class="skill-pill">Elasticsearch</span>
-                <span class="skill-pill">PostgreSQL</span>
-                <span class="skill-pill">DocumentDB</span>
-                <span class="skill-pill">Redis</span>
-                <span class="skill-pill">Celery</span>
-              </div>
-              <ul>
-                <li>FastAPI services connecting <strong>PostgreSQL</strong> and <strong>AWS DocumentDB</strong> for hybrid
-                  structured + flexible storage.</li>
-                <li><strong>Elasticsearch</strong> for full-text search and faceted filters; tuned mappings and query DSL.</li>
-                <li>Ingestion pipelines from multiple external APIs and internal sources into a unified schema.</li>
-                <li>Celery + Redis for scheduled ingestion, processing, aggregation, and reporting.</li>
-                <li>REST APIs for React: complex filtering, pagination, exports; schema design and reliability across stores.</li>
-              </ul>
-              <p class="project-links mb-0 pt-1"><a href="portfolio-details.html">Legacy detail page →</a></p>
-            </article>
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="80">
-            <article class="project-card">
-              <span class="project-domain">Ed-tech · Booking</span>
-              <h3><i class="bx bx-swim me-1"></i> SwimTimes</h3>
-              <p class="project-meta">Cubexo Software Solutions · US-based client</p>
-              <p class="project-lead">Online platform to <strong>book swim lessons</strong> with real-time availability,
-                payments, and role-specific dashboards.</p>
-              <div class="project-stack">
-                <span class="skill-pill">Django</span>
-                <span class="skill-pill">Python</span>
-                <span class="skill-pill">JavaScript</span>
-                <span class="skill-pill">AJAX</span>
-                <span class="skill-pill">AWS</span>
-                <span class="skill-pill">PostgreSQL</span>
-                <span class="skill-pill">Redis</span>
-                <span class="skill-pill">Celery</span>
-                <span class="skill-pill">Stripe</span>
-              </div>
-              <ul>
-                <li>User dashboard: bookings, progress, history; instructor dashboard: schedules, attendance, earnings.</li>
-                <li><strong>Stripe</strong> payments; AJAX updates for seat availability to avoid double booking.</li>
-                <li>PostgreSQL models for users, instructors, bookings, lesson plans, payments; AWS S3 for media.</li>
-                <li>Authentication, role-based access, email notifications for confirmations and reminders.</li>
-              </ul>
-              <p class="project-links mb-0 pt-1"><a href="swim-details.html">More on SwimTimes →</a></p>
-            </article>
-          </div>
-
-          <div class="col-12" data-aos="fade-up">
-            <article class="project-card">
-              <span class="project-domain">AWS · Serverless (early career)</span>
-              <h3><i class="bx bx-cloud me-1"></i> APIs, Lambda &amp; integrations</h3>
-              <p class="project-meta">Cubexo Software Solutions · Associate Software Engineer · Jul 2021 – Jun 2022</p>
-              <p class="project-lead">Backend features on <strong>AWS Lambda</strong> and <strong>API Gateway</strong>, with
-                Redis-backed performance patterns and operational visibility.</p>
-              <div class="project-stack">
-                <span class="skill-pill">AWS Lambda</span>
-                <span class="skill-pill">API Gateway</span>
-                <span class="skill-pill">S3</span>
-                <span class="skill-pill">Redis</span>
-                <span class="skill-pill">CloudWatch</span>
-              </div>
-              <ul>
-                <li>Lambda + API Gateway APIs; S3 for object storage; Redis for low-latency responses.</li>
-                <li>Scheduled Lambdas (cron) for subscription expiry and similar jobs.</li>
-                <li>Image and document size optimization scripts; debugging and tuning with CloudWatch.</li>
-              </ul>
-            </article>
-          </div>
-
-        </div>
-        </div>
-
-      </div>
-    </section><!-- End Portfolio Section -->
+    </section><!-- End Experience Section -->
 
   </main><!-- End #main -->
 
