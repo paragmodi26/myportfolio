@@ -287,6 +287,29 @@
       color: #6c757d;
       margin-bottom: 0.5rem;
     }
+    #resume .job-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.65rem;
+      margin-bottom: 0.55rem;
+    }
+    #resume .current-role-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(135deg, #149ddd, #117cad);
+      border-radius: 8px;
+      padding: 0.25rem 0.55rem;
+      box-shadow: 0 6px 18px rgba(20, 157, 221, 0.25);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
     #resume .resume-job-card h4 {
       font-size: 1.05rem;
       font-weight: 700;
@@ -294,6 +317,19 @@
       margin-bottom: 0.25rem;
       text-transform: none;
       font-family: "Raleway", sans-serif;
+    }
+    #resume .resume-role-chip {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(135deg, #149ddd, #117cad);
+      padding: 0.3rem 0.68rem;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(20, 157, 221, 0.28);
+      vertical-align: middle;
     }
     #resume .resume-job-card .company {
       font-size: 0.95rem;
@@ -430,13 +466,30 @@
     }
     #resume .project-card h3 {
       font-size: 1.2rem;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.45rem;
+      line-height: 1.35;
       color: #173b6c;
     }
     #resume .project-meta {
-      font-size: 0.88rem;
-      color: #6c757d;
-      margin-bottom: 0.65rem;
+      font-size: 0.82rem;
+      color: #5f6f84;
+      margin-bottom: 0.7rem;
+      background: rgba(20, 157, 221, 0.08);
+      border: 1px solid rgba(20, 157, 221, 0.18);
+      border-radius: 8px;
+      padding: 0.35rem 0.55rem;
+    }
+    #resume .project-meta .project-fact-line {
+      display: block;
+      line-height: 1.4;
+    }
+    #resume .project-meta .project-fact-line + .project-fact-line {
+      margin-top: 0.22rem;
+    }
+    #resume .project-meta .project-fact-label {
+      font-weight: 700;
+      color: #173b6c;
+      margin-right: 0.25rem;
     }
     #resume .project-domain {
       display: inline-block;
@@ -452,34 +505,108 @@
     }
     #resume .project-lead {
       font-size: 0.95rem;
-      line-height: 1.55;
+      line-height: 1.62;
       color: #3a3a3a;
       margin-bottom: 1rem;
     }
     #resume .project-card ul {
       margin-bottom: 0;
-      padding-left: 1.1rem;
+      padding-left: 1.15rem;
     }
     #resume .project-card ul li {
-      margin-bottom: 0.4rem;
-      font-size: 0.92rem;
-      line-height: 1.5;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      line-height: 1.58;
+      color: #334155;
     }
     #resume .project-stack {
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.9rem;
+      padding-top: 0.15rem;
+      border-top: 1px dashed rgba(20, 157, 221, 0.24);
+      margin-top: 0.2rem;
     }
     #resume .project-links a {
       font-size: 0.88rem;
       font-weight: 600;
     }
+    #resume .project-outcome {
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: #334155;
+      background: rgba(20, 157, 221, 0.08);
+      border: 1px solid rgba(20, 157, 221, 0.2);
+      border-radius: 8px;
+      padding: 0.5rem 0.62rem;
+    }
+    #resume .project-outcome strong {
+      color: #173b6c;
+    }
     #resume .project-card h3 i {
       color: #149ddd;
     }
     #resume .project-team-line {
-      font-size: 0.9rem;
-      color: #3a3a3a;
+      font-size: 0.84rem;
+      color: #455a74;
       margin-bottom: 0.75rem;
-      line-height: 1.5;
+      line-height: 1.45;
+      background: rgba(15, 29, 45, 0.03);
+      border-left: 3px solid rgba(20, 157, 221, 0.45);
+      border-radius: 6px;
+      padding: 0.4rem 0.55rem;
+    }
+    #resume .project-team-line .project-facts-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.35rem;
+    }
+    #resume .project-team-line .project-fact {
+      display: block;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(20, 157, 221, 0.2);
+      border-radius: 6px;
+      padding: 0.28rem 0.42rem;
+    }
+    #resume .project-team-line .project-fact.project-fact--role {
+      background: linear-gradient(135deg, rgba(20, 157, 221, 0.14), rgba(17, 124, 173, 0.14));
+      border-color: rgba(20, 157, 221, 0.38);
+    }
+    #resume .project-team-line .project-fact-label {
+      display: block;
+      font-size: 0.67rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      color: #149ddd;
+      margin-bottom: 0.08rem;
+    }
+    #resume .project-team-line .project-fact--role .project-fact-label {
+      display: inline-block;
+      font-size: 0.64rem;
+      color: #fff;
+      background: linear-gradient(135deg, #149ddd, #117cad);
+      border-radius: 6px;
+      padding: 0.22rem 0.48rem;
+      margin-bottom: 0.18rem;
+      box-shadow: 0 3px 10px rgba(20, 157, 221, 0.25);
+    }
+    #resume .project-team-line .project-fact--role .project-role-title {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: #173b6c;
+      margin-bottom: 0.1rem;
+    }
+    #resume .project-team-line .project-fact--role .project-role-desc {
+      display: block;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: #3f536c;
+    }
+    @media (max-width: 767.98px) {
+      #resume .project-team-line .project-facts-row {
+        grid-template-columns: 1fr;
+      }
     }
     #resume .peek-card {
       background: #fff;
@@ -564,6 +691,13 @@
       font-size: 0.88rem;
       color: #173b6c;
       line-height: 1.45;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+    #resume .cubexo-role-line .date-pill {
+      margin-bottom: 0;
     }
     #resume .cubexo-role-block {
       padding-top: 0.5rem;
@@ -761,8 +895,19 @@
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-      <h1>Parag Modi</h1>
+    <div class="hero-bg-mesh" aria-hidden="true">
+      <span class="hero-orb hero-orb--a"></span>
+      <span class="hero-orb hero-orb--b"></span>
+      <span class="hero-orb hero-orb--c"></span>
+    </div>
+    <div class="hero-code-grid" aria-hidden="true"></div>
+    <div id="hero-particles" aria-hidden="true"></div>
+    <div id="hero-floating-bubbles" class="hero-floating-bubbles" aria-hidden="true"></div>
+    <div class="hero-container" id="heroNameCard" data-aos="fade-in">
+      <div class="hero-title-stack">
+        <h1 class="hero-name-heading">Parag Modi</h1>
+        <div class="hero-name-line" aria-hidden="true"></div>
+      </div>
       <p>I'm <span class="typed"
           data-typed-items="Full Stack Software Engineer, Python Backend Engineer, FastAPI API Developer, React Frontend Developer, Scalable APIs &amp; Cloud Engineer"></span></p>
     </div>
@@ -1117,10 +1262,12 @@
                 <article class="resume-job-card exp-toggle-card mb-0">
                   <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#jobYash2025"
                     aria-expanded="false" aria-controls="jobYash2025">
-                    <span class="date-pill">Jan 2025 – Present</span>
-                    <p class="job-meta mb-1">Current role</p>
-                    <h4 class="mb-0">Sr. Software Engineer</h4>
-                    <p class="company mb-0">Yash Technologies Pvt. Ltd.</p>
+                    <p class="company mb-1">Yash Technologies Pvt. Ltd.</p>
+                    <div class="job-top-row">
+                      <span class="date-pill mb-0">Jan 2025 – Present</span>
+                      <span class="current-role-badge">Current role</span>
+                    </div>
+                    <h4 class="mb-0"><span class="resume-role-chip">Sr. Software Engineer</span></h4>
                     <p class="exp-toggle-hint mb-0">YCMS (internal HR) · DataBridge for SLB · Python, React, Angular, AWS,
                       Azure — <em>click for responsibilities</em></p>
                     <span class="exp-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
@@ -1147,9 +1294,9 @@
                 <article class="resume-job-card exp-toggle-card mb-0">
                   <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#jobThoughtwin"
                     aria-expanded="false" aria-controls="jobThoughtwin">
+                    <p class="company mb-1">Thoughtwin</p>
                     <span class="date-pill">Sep 2024 – Jan 2025</span>
-                    <h4 class="mb-0 pt-1">Software Engineer</h4>
-                    <p class="company mb-0">Thoughtwin</p>
+                    <h4 class="mb-0 pt-1"><span class="resume-role-chip">Software Engineer</span></h4>
                     <p class="exp-toggle-hint mb-0">TotalTicketing · white-label event ticketing · Python, FastAPI, React —
                       <em>click for responsibilities</em></p>
                     <span class="exp-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
@@ -1175,9 +1322,9 @@
                 <article class="resume-job-card exp-toggle-card mb-0">
                   <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#jobFrammer"
                     aria-expanded="false" aria-controls="jobFrammer">
+                    <p class="company mb-1">Frammer AI</p>
                     <span class="date-pill">Jun 2024 – Jul 2024</span>
-                    <h4 class="mb-0 pt-1">Software Engineer</h4>
-                    <p class="company mb-0">Frammer AI</p>
+                    <h4 class="mb-0 pt-1"><span class="resume-role-chip">Software Engineer</span></h4>
                     <p class="exp-toggle-hint mb-0">Media AI SaaS · Flask → FastAPI migration focus — <em>click for
                         responsibilities</em></p>
                     <span class="exp-chevron" aria-hidden="true"><i class="bi bi-chevron-down"></i></span>
@@ -1202,10 +1349,14 @@
                     aria-expanded="false" aria-controls="jobCubexoAll">
                     <p class="company mb-2">Cubexo Software Solutions, Indore</p>
                     <div class="cubexo-roles-banner">
-                      <p class="cubexo-role-line mb-0"><span class="cubexo-role-chip">Software Engineer</span><span
-                          class="text-muted">Jul 2022 – Mar 2024</span></p>
-                      <p class="cubexo-role-line mb-0"><span class="cubexo-role-chip">Associate Software Engineer</span><span
-                          class="text-muted">Jul 2021 – Jun 2022</span></p>
+                      <p class="cubexo-role-line mb-0">
+                        <span class="cubexo-role-chip">Software Engineer</span>
+                        <span class="date-pill">Jul 2022 – Mar 2024</span>
+                      </p>
+                      <p class="cubexo-role-line mb-0">
+                        <span class="cubexo-role-chip">Associate Software Engineer</span>
+                        <span class="date-pill">Jul 2021 – Jun 2022</span>
+                      </p>
                     </div>
                     <p class="exp-toggle-hint mb-0">Pulse · SwimTimes · AWS Lambda &amp; serverless — <em>click for both
                         roles</em></p>
@@ -1214,7 +1365,7 @@
                   <div id="jobCubexoAll" class="collapse exp-toggle-detail" data-bs-parent="#jobExpRow2">
                     <div class="cubexo-role-block">
                       <span class="date-pill">Jul 2022 – Mar 2024</span>
-                      <h5>Software Engineer</h5>
+                      <h5><span class="resume-role-chip">Software Engineer</span></h5>
                       <ul class="mb-0">
                         <li><strong>Pulse</strong> — <strong>Python</strong> developer on a <strong>15-person</strong> squad
                           building a SaaS data platform: <strong>FastAPI</strong> services, Elasticsearch search, AWS
@@ -1230,7 +1381,7 @@
                     </div>
                     <div class="cubexo-role-block">
                       <span class="date-pill">Jul 2021 – Jun 2022</span>
-                      <h5>Associate Software Engineer</h5>
+                      <h5><span class="resume-role-chip">Associate Software Engineer</span></h5>
                       <ul class="mb-0">
                         <li>Implemented serverless HTTP APIs on <strong>AWS Lambda</strong> and <strong>API Gateway</strong>
                           with structured logging and error handling.</li>
@@ -1249,8 +1400,9 @@
 
           <div class="resume-exp-section" data-aos="fade-up">
             <h3 class="resume-block-title">Projects</h3>
-            <p class="small text-muted mb-2">Each card shows client, team size, my role, and stack at a glance—expand for
-              full narrative and links. Only one card per row expands at a time.</p>
+            <p class="small text-muted mb-2">Each card now has clear blocks: <strong>Domain</strong>, <strong>Client &amp;
+                timeline</strong>, <strong>Team</strong>, and <strong>My role</strong>. Expand a card for project details and
+              links.</p>
             <div class="row g-4 mb-2" id="projectsRow1" data-accordion-group="projects-1">
 
               <div class="col-lg-6" data-aos="fade-up">
@@ -1286,6 +1438,9 @@
                       <li>Partnered with HR leadership and cross-functional teams to align capabilities with organizational
                         goals.</li>
                     </ul>
+                    <p class="project-outcome mb-0 pt-2"><strong>Outcome:</strong> Delivered a centralized competency platform
+                      that improved visibility into skills, accelerated assessment workflows, and supported better
+                      talent-planning decisions.</p>
                   </div>
                 </article>
               </div>
@@ -1324,6 +1479,8 @@
                       <li><strong>Grafana</strong> monitoring for pipeline health—less manual overhead, better visibility for
                         operations.</li>
                     </ul>
+                    <p class="project-outcome mb-0 pt-2"><strong>Outcome:</strong> Reduced manual cross-system effort and
+                      improved reliability of enterprise data movement with auditable, monitored ingestion workflows.</p>
                   </div>
                 </article>
               </div>
@@ -1360,6 +1517,8 @@
                       <li>Admin tooling for lifecycle management—seat maps, pricing tiers, capacity, booking analytics.</li>
                       <li>Payment integration and <strong>real-time seat availability</strong> to prevent double bookings.</li>
                     </ul>
+                    <p class="project-outcome mb-0 pt-2"><strong>Outcome:</strong> Enabled scalable multi-tenant event
+                      operations with smoother booking journeys and fewer seat-conflict incidents.</p>
                   </div>
                 </article>
               </div>
@@ -1392,6 +1551,8 @@
                       <li>Automated metadata: hashtags, thumbnails, titles, platform-specific descriptions for discoverability.</li>
                       <li><strong>OAuth</strong>-based direct publish to Instagram and YouTube on behalf of users.</li>
                     </ul>
+                    <p class="project-outcome mb-0 pt-2"><strong>Outcome:</strong> Increased creator publishing velocity by
+                      automating editing and distribution steps from long-form source to short-form platform output.</p>
                   </div>
                 </article>
               </div>
@@ -1434,6 +1595,8 @@
                       <li>REST APIs for React: complex filtering, pagination, exports; schema design and reliability across stores.</li>
                     </ul>
                     <p class="project-links mb-0 pt-1"><a href="portfolio-details.html">Legacy detail page →</a></p>
+                    <p class="project-outcome mb-0 pt-2"><strong>Outcome:</strong> Improved discoverability and operational
+                      efficiency through fast search, consistent data ingestion, and dependable API-driven reporting.</p>
                   </div>
                 </article>
               </div>
@@ -1472,6 +1635,8 @@
                       <li>Authentication, role-based access, email notifications for confirmations and reminders.</li>
                     </ul>
                     <p class="project-links mb-0 pt-1"><a href="swim-details.html">More on SwimTimes →</a></p>
+                    <p class="project-outcome mb-0 pt-2"><strong>Outcome:</strong> Delivered a reliable booking experience
+                      that simplified scheduling for families and instructors while streamlining school operations.</p>
                   </div>
                 </article>
               </div>
@@ -1506,6 +1671,9 @@
                       <li>Scheduled Lambdas (cron) for subscription expiry and similar jobs.</li>
                       <li>Image and document size optimization scripts; debugging and tuning with CloudWatch.</li>
                     </ul>
+                    <p class="project-outcome mb-0 pt-2"><strong>Outcome:</strong> Established a stable serverless foundation
+                      for early-stage products with faster operations, lower maintenance overhead, and improved
+                      observability.</p>
                   </div>
                 </article>
               </div>
@@ -1532,6 +1700,7 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" crossorigin="anonymous"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
