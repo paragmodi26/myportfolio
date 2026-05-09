@@ -669,6 +669,53 @@
     #resume .btn-download-cv:hover i {
       transform: translateY(3px);
     }
+    /* Accordion rows: equal heights when collapsed, natural height when one card opens */
+    #skillsRowTop.row > [class*="col-"],
+    #skillsRowBottom.row > [class*="col-"],
+    #credentialsPeekParent.row > [class*="col-"],
+    #jobExpRow1.row > [class*="col-"],
+    #jobExpRow2.row > [class*="col-"],
+    #projectsRow1.row > [class*="col-"],
+    #projectsRow2.row > [class*="col-"],
+    #projectsRow3.row > [class*="col-"],
+    #projectsRow4.row > [class*="col-"] {
+      display: flex;
+    }
+    #skillsRowTop .skill-category-card,
+    #skillsRowBottom .skill-category-card,
+    #credentialsPeekParent .peek-card,
+    #jobExpRow1 .resume-job-card,
+    #jobExpRow2 .resume-job-card,
+    #projectsRow1 .project-card,
+    #projectsRow2 .project-card,
+    #projectsRow3 .project-card,
+    #projectsRow4 .project-card {
+      min-height: 100%;
+      height: 100%;
+    }
+    #skillsRowTop.has-open-panel.row > [class*="col-"],
+    #skillsRowBottom.has-open-panel.row > [class*="col-"],
+    #credentialsPeekParent.has-open-panel.row > [class*="col-"],
+    #jobExpRow1.has-open-panel.row > [class*="col-"],
+    #jobExpRow2.has-open-panel.row > [class*="col-"],
+    #projectsRow1.has-open-panel.row > [class*="col-"],
+    #projectsRow2.has-open-panel.row > [class*="col-"],
+    #projectsRow3.has-open-panel.row > [class*="col-"],
+    #projectsRow4.has-open-panel.row > [class*="col-"] {
+      display: block;
+    }
+    #skillsRowTop.has-open-panel .skill-category-card,
+    #skillsRowBottom.has-open-panel .skill-category-card,
+    #credentialsPeekParent.has-open-panel .peek-card,
+    #jobExpRow1.has-open-panel .resume-job-card,
+    #jobExpRow2.has-open-panel .resume-job-card,
+    #projectsRow1.has-open-panel .project-card,
+    #projectsRow2.has-open-panel .project-card,
+    #projectsRow3.has-open-panel .project-card,
+    #projectsRow4.has-open-panel .project-card {
+      min-height: 0 !important;
+      height: auto !important;
+    }
   </style>
 </head>
 
@@ -717,7 +764,7 @@
     <div class="hero-container" data-aos="fade-in">
       <h1>Parag Modi</h1>
       <p>I'm <span class="typed"
-          data-typed-items="Full Stack Software Engineer, Python • FastAPI • React, Scalable APIs &amp; Cloud"></span></p>
+          data-typed-items="Full Stack Software Engineer, Python Backend Engineer, FastAPI API Developer, React Frontend Developer, Scalable APIs &amp; Cloud Engineer"></span></p>
     </div>
   </section><!-- End Hero -->
 
@@ -750,7 +797,23 @@
                 Strong in Python backends (FastAPI, Flask, Django) and modern frontends (React, Angular), with hands-on
                 work in Elasticsearch, Celery, Redis, and PostgreSQL. I own features across architecture, APIs, data
                 modeling, deployment, and observability.
+                I enjoy turning complex requirements into clean, reliable, and user-friendly products.
               </p>
+            </div>
+          </div>
+
+          <div class="about-value-block mt-4 mb-3" data-aos="fade-up" data-aos-delay="80">
+            <p class="section-subheading text-uppercase fw-semibold mb-2">What I bring</p>
+            <div class="about-value-grid row g-2">
+              <div class="col-md-4">
+                <div class="about-value-chip"><i class="bi bi-lightning-charge-fill" aria-hidden="true"></i>Fast product delivery mindset</div>
+              </div>
+              <div class="col-md-4">
+                <div class="about-value-chip"><i class="bi bi-diagram-3-fill" aria-hidden="true"></i>Clean architecture and API ownership</div>
+              </div>
+              <div class="col-md-4">
+                <div class="about-value-chip"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i>Performance and scale-focused execution</div>
+              </div>
             </div>
           </div>
 
@@ -862,7 +925,7 @@
         <div class="section-body">
           <p class="small text-muted mb-2" data-aos="fade-up">Each card names an area (Backend, Frontend, and so on). Tap
             to expand technologies—only one card per row stays open.</p>
-          <div class="row g-4 mb-2 skills-content" id="skillsRowTop">
+          <div class="row g-4 mb-2 skills-content" id="skillsRowTop" data-accordion-group="skills-top">
 
             <div class="col-md-6" data-aos="fade-up">
               <article class="skill-category-card skill-toggle-card">
@@ -911,7 +974,7 @@
             </div>
 
           </div>
-          <div class="row g-4 skills-content" id="skillsRowBottom">
+          <div class="row g-4 skills-content" id="skillsRowBottom" data-accordion-group="skills-bottom">
 
             <div class="col-md-6" data-aos="fade-up">
               <article class="skill-category-card skill-toggle-card">
@@ -983,7 +1046,7 @@
         <div class="section-body">
           <p class="section-subheading text-uppercase fw-semibold mb-2" data-aos="fade-up">Credentials</p>
           <p class="small text-muted mb-2" data-aos="fade-up">Only one panel opens at a time—open another to switch.</p>
-          <div class="row g-3 mb-1" id="credentialsPeekParent" data-aos="fade-up">
+          <div class="row g-3 mb-1" id="credentialsPeekParent" data-aos="fade-up" data-accordion-group="credentials">
             <div class="col-md-6 col-xl-3">
               <div class="peek-card">
                 <button type="button" class="peek-card-toggle" data-bs-toggle="collapse" data-bs-target="#peekProfSummary"
@@ -1049,7 +1112,7 @@
 
           <div class="resume-exp-section" data-aos="fade-up">
             <h3 class="resume-block-title">Professional experience</h3>
-            <div class="row g-3 mb-3" id="jobExpRow1">
+            <div class="row g-3 mb-3" id="jobExpRow1" data-accordion-group="experience-top">
               <div class="col-lg-6">
                 <article class="resume-job-card exp-toggle-card mb-0">
                   <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#jobYash2025"
@@ -1107,7 +1170,7 @@
               </div>
             </div>
 
-            <div class="row g-3" id="jobExpRow2">
+            <div class="row g-3" id="jobExpRow2" data-accordion-group="experience-bottom">
               <div class="col-lg-6">
                 <article class="resume-job-card exp-toggle-card mb-0">
                   <button type="button" class="exp-toggle-header" data-bs-toggle="collapse" data-bs-target="#jobFrammer"
@@ -1188,7 +1251,7 @@
             <h3 class="resume-block-title">Projects</h3>
             <p class="small text-muted mb-2">Each card shows client, team size, my role, and stack at a glance—expand for
               full narrative and links. Only one card per row expands at a time.</p>
-            <div class="row g-4 mb-2" id="projectsRow1">
+            <div class="row g-4 mb-2" id="projectsRow1" data-accordion-group="projects-1">
 
               <div class="col-lg-6" data-aos="fade-up">
                 <article class="project-card exp-toggle-card">
@@ -1266,7 +1329,7 @@
               </div>
 
             </div>
-            <div class="row g-4 mb-2" id="projectsRow2">
+            <div class="row g-4 mb-2" id="projectsRow2" data-accordion-group="projects-2">
 
               <div class="col-lg-6" data-aos="fade-up">
                 <article class="project-card exp-toggle-card">
@@ -1334,7 +1397,7 @@
               </div>
 
             </div>
-            <div class="row g-4 mb-2" id="projectsRow3">
+            <div class="row g-4 mb-2" id="projectsRow3" data-accordion-group="projects-3">
 
               <div class="col-lg-6" data-aos="fade-up">
                 <article class="project-card exp-toggle-card">
@@ -1414,7 +1477,7 @@
               </div>
 
             </div>
-            <div class="row g-4" id="projectsRow4">
+            <div class="row g-4" id="projectsRow4" data-accordion-group="projects-4">
 
               <div class="col-12" data-aos="fade-up">
                 <article class="project-card exp-toggle-card">

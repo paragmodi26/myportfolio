@@ -339,6 +339,14 @@ h6 {
   border-bottom: 3px solid #149ddd;
 }
 
+#hero .hero-container {
+  animation: heroFloat 5s ease-in-out infinite;
+}
+
+#hero p .typed {
+  text-shadow: 0 0 18px rgba(20, 157, 221, 0.45);
+}
+
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
@@ -472,6 +480,31 @@ section {
   color: #444;
 }
 
+.about .about-value-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  border: 1px solid rgba(20, 157, 221, 0.2);
+  border-radius: 10px;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: #173b6c;
+  box-shadow: 0 4px 14px rgba(15, 29, 45, 0.05);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.about .about-value-chip i {
+  color: #149ddd;
+}
+
+.about .about-value-chip:hover {
+  transform: translateY(-2px);
+  border-color: rgba(20, 157, 221, 0.4);
+  box-shadow: 0 10px 22px rgba(20, 157, 221, 0.14);
+}
+
 .about .about-details-grid {
   margin-top: 0.25rem;
 }
@@ -493,6 +526,27 @@ section {
   border-color: rgba(20, 157, 221, 0.35);
   box-shadow: 0 6px 18px rgba(20, 157, 221, 0.09);
   transform: translateY(-1px);
+}
+
+#skills .skill-category-card,
+#resume .resume-job-card,
+#resume .project-card,
+#resume .peek-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+#skills .skill-category-card:hover,
+#resume .resume-job-card:hover,
+#resume .project-card:hover,
+#resume .peek-card:hover {
+  transform: translateY(-3px);
+}
+
+#skills .skill-toggle-card.is-open,
+#resume .exp-toggle-card.is-open,
+#resume .peek-card.is-open {
+  border-color: rgba(20, 157, 221, 0.42) !important;
+  box-shadow: 0 14px 30px rgba(20, 157, 221, 0.14);
 }
 
 .about .about-detail-icon {
@@ -1166,6 +1220,15 @@ section {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
   }
 }
 

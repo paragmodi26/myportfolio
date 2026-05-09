@@ -143,6 +143,78 @@
   }
 
   /**
+   * Portfolio accordions: only clicked card should open in each group
+   */
+  const accordionGroups = select('[data-accordion-group]', true)
+  if (accordionGroups.length) {
+    const findCard = (collapseEl) => collapseEl.closest('.skill-toggle-card, .exp-toggle-card, .peek-card')
+    const findToggleFor = (group, collapseId) => group.querySelector(`[data-bs-target="#${collapseId}"]`)
+    const setExpandedState = (group, collapseId, expanded) => {
+      const btn = findToggleFor(group, collapseId)
+      if (btn) btn.setAttribute('aria-expanded', expanded ? 'true' : 'false')
+    }
+    const syncGroupOpenState = (group, panels) => {
+      const hasOpenPanel = panels.some((panel) => panel.classList.contains('show') && !panel.hidden)
+      group.classList.toggle('has-open-panel', hasOpenPanel)
+    }
+    const closePanel = (group, panel) => {
+      panel.classList.remove('show')
+      panel.hidden = true
+      if (panel.id) setExpandedState(group, panel.id, false)
+      const card = findCard(panel)
+      if (card) card.classList.remove('is-open')
+    }
+    const openPanel = (group, panel) => {
+      panel.hidden = false
+      panel.classList.add('show')
+      if (panel.id) setExpandedState(group, panel.id, true)
+      const card = findCard(panel)
+      if (card) card.classList.add('is-open')
+    }
+
+    accordionGroups.forEach((group) => {
+      const collapses = [...group.querySelectorAll('.skill-toggle-body, .exp-toggle-detail, .peek-card-body')]
+      const toggles = [...group.querySelectorAll('[data-bs-target]')]
+
+      // Disable Bootstrap's delegated auto-toggle for these buttons.
+      toggles.forEach((btn) => {
+        if (btn.getAttribute('data-bs-toggle') === 'collapse') {
+          btn.removeAttribute('data-bs-toggle')
+        }
+      })
+
+      // Normalize initial state.
+      collapses.forEach((panel) => {
+        if (panel.classList.contains('show')) {
+          openPanel(group, panel)
+        } else {
+          closePanel(group, panel)
+        }
+      })
+      syncGroupOpenState(group, collapses)
+
+      // Manual controller: only one panel open per row/group.
+      toggles.forEach((toggleBtn) => {
+        toggleBtn.addEventListener('click', (event) => {
+          event.preventDefault()
+          event.stopPropagation()
+
+          const selector = toggleBtn.getAttribute('data-bs-target')
+          if (!selector || !selector.startsWith('#')) return
+
+          const target = group.querySelector(selector)
+          if (!target) return
+
+          const isOpen = target.classList.contains('show') && !target.hidden
+          collapses.forEach((panel) => closePanel(group, panel))
+          if (!isOpen) openPanel(group, target)
+          syncGroupOpenState(group, collapses)
+        })
+      })
+    })
+  }
+
+  /**
    * Initiate portfolio lightbox (only when lightbox links exist)
    */
   if (select('.portfolio-lightbox', true).length) {
